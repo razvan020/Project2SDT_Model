@@ -1,0 +1,256 @@
+openapi: 3.0.0
+info:
+  title: Patient Records APIs
+  description: Patient Records APIs
+  version: 0.0.1-SNAPSHOT
+
+paths:
+
+
+  '/api/v1/patient-records/updatePatientRecord':
+    put:
+      summary: Update Patient Records
+      description: Update Patient Records
+      operationId: updatePatientRecords
+      security:
+        - basicAuth: [ ]
+      tags:
+        - Update Patient Records
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdatePatientRecordsRequest'
+      parameters:
+        - in: query
+          required: true
+          name: patientId
+          schema:
+            type: number
+
+
+
+      responses:
+        '200':
+          description: Valid request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UpdatePatientRecordsResponse'
+
+        '400':
+          description: Invalid request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Errors'
+
+        '500':
+          description: server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Errors'
+
+  '/api/v1/patient-records/getPatientRecord':
+    get:
+      summary: Get Patient Records
+      description: Get Patient Records
+      operationId: getPatientRecords
+      security:
+        - basicAuth: [ ]
+      tags:
+        - Get Patient Records
+      parameters:
+        - in: query
+          required: true
+          name: patientId
+          schema:
+            type: number
+
+
+      responses:
+        '200':
+          description: Valid request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PatientRecord'
+
+        '400':
+          description: Invalid request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Errors'
+
+        '500':
+          description: server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Errors'
+
+
+  '/api/v1/patient-records/createPatientRecord':
+    post:
+      summary: Create Patient Records
+      description: Create Patient Records
+      operationId: createPatientRecords
+      security:
+        - basicAuth: [ ]
+      tags:
+        - Create Patient Records
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreatePatientRecordsRequest'
+
+      responses:
+        '200':
+          description: Valid request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CreatePatientRecordsResponse'
+
+        '400':
+          description: Invalid request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Errors'
+
+        '500':
+          description: server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Errors'
+
+
+
+components:
+  securitySchemes:
+    basicAuth:
+      type: http
+      scheme: basic
+
+  schemas:
+
+    UpdatePatientRecordsRequest:
+      type: object
+      properties:
+        patientId:
+          type: string
+        patientName:
+          type: string
+        address:
+          type: string
+        date:
+          type: date
+        weight:
+          type: number
+        height:
+          type: number
+        birthDate:
+          type: date
+
+    UpdatePatientRecordsResponse:
+      type: object
+      properties:
+        result:
+          type: string
+
+    PatientRecord:
+      type: object
+      properties:
+        patientId:
+          type: number
+        patientName:
+          type: string
+        address:
+          type: string
+        date:
+          type: date
+        weight:
+          type: number
+        height:
+          type: number
+        birthDate:
+          type: date
+
+    CreatePatientRecordsRequest:
+      type: object
+      properties:
+        patientId:
+          type: string
+        patientName:
+          type: string
+        address:
+          type: string
+        date:
+          type: date
+        weight:
+          type: number
+        height:
+          type: number
+        birthDate:
+          type: date
+
+    CreatePatientRecordsResponse:
+      type: object
+      properties:
+        result:
+          type: string
+
+
+    PatientRecordsResponse:
+      type: object
+      properties:
+        patientId:
+          type: number
+        patientName:
+          type: string
+        address:
+          type: string
+        date:
+          type: date
+        weight:
+          type: number
+        height:
+          type: number
+        birthDate:
+          type: date
+
+
+
+
+
+    Errors:
+      type: object
+      required:
+        - errors
+      properties:
+        errors:
+          type: array
+          items:
+            $ref: '#/components/schemas/ErrorType'
+        requestId:
+          type: string
+    ErrorType:
+      required:
+        - error
+        - message
+      properties:
+        error:
+          type: string
+          example: error
+        message:
+          type: string
+          example: error message
+        code:
+          type: string
+          example: "Internal_Server_Error"
+
