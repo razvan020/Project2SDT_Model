@@ -1,0 +1,12 @@
+README.md
+com/api/project2/controller/generated/patientsrecords/ApiApi.java
+com/api/project2/controller/generated/patientsrecords/ApiUtil.java
+com/api/project2/model/generated/patientsrecords/CreatePatientRecordsRequest.java
+com/api/project2/model/generated/patientsrecords/CreatePatientRecordsResponse.java
+com/api/project2/model/generated/patientsrecords/ErrorType.java
+com/api/project2/model/generated/patientsrecords/Errors.java
+com/api/project2/model/generated/patientsrecords/PatientRecord.java
+com/api/project2/model/generated/patientsrecords/PatientRecordsResponse.java
+com/api/project2/model/generated/patientsrecords/UpdatePatientRecordsRequest.java
+com/api/project2/model/generated/patientsrecords/UpdatePatientRecordsResponse.java
+pom.xml

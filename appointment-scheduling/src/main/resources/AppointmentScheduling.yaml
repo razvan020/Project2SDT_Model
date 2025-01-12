@@ -1,0 +1,251 @@
+openapi: 3.0.3
+info:
+  title: Appointment Scheduling APIs
+  description: APIs for managing appointments between patients and doctors.
+  version: 0.0.1-SNAPSHOT
+
+paths:
+  '/api/v1/appointments/createAppointment':
+    post:
+      summary: Create Appointment
+      description: Create a new appointment
+      operationId: createAppointment
+      security:
+        - basicAuth: []
+      tags:
+        - Appointments
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateAppointmentRequest'
+      responses:
+        '200':
+          description: Appointment successfully created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CreateAppointmentResponse'
+        '400':
+          description: Invalid request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Errors'
+        '500':
+          description: Server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Errors'
+
+  '/api/v1/appointments/getAppointment':
+    get:
+      summary: Get Appointment
+      description: Retrieve details of an appointment
+      operationId: getAppointment
+      security:
+        - basicAuth: []
+      tags:
+        - Appointments
+      parameters:
+        - in: query
+          name: appointmentId
+          required: true
+          schema:
+            type: number
+      responses:
+        '200':
+          description: Appointment details retrieved successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AppointmentDetails'
+        '400':
+          description: Invalid request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Errors'
+        '500':
+          description: Server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Errors'
+
+  '/api/v1/appointments/updateAppointment':
+    put:
+      summary: Update Appointment
+      description: Update an existing appointment
+      operationId: updateAppointment
+      security:
+        - basicAuth: []
+      tags:
+        - Appointments
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateAppointmentRequest'
+      parameters:
+        - in: query
+          name: appointmentId
+          required: true
+          schema:
+            type: number
+      responses:
+        '200':
+          description: Appointment successfully updated
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UpdateAppointmentResponse'
+        '400':
+          description: Invalid request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Errors'
+        '500':
+          description: Server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Errors'
+
+  '/api/v1/appointments/deleteAppointment':
+    delete:
+      summary: Delete Appointment
+      description: Delete an existing appointment
+      operationId: deleteAppointment
+      security:
+        - basicAuth: []
+      tags:
+        - Appointments
+      parameters:
+        - in: query
+          name: appointmentId
+          required: true
+          schema:
+            type: number
+      responses:
+        '200':
+          description: Appointment successfully deleted
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DeleteAppointmentResponse'
+        '400':
+          description: Invalid request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Errors'
+        '500':
+          description: Server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Errors'
+
+components:
+  securitySchemes:
+    basicAuth:
+      type: http
+      scheme: basic
+
+  schemas:
+    CreateAppointmentRequest:
+      type: object
+      properties:
+        idPatient:
+          type: number
+        idDoctor:
+          type: number
+        timestamp:
+          type: string
+          format: date-time
+        type:
+          $ref: '#/components/schemas/AppointmentType'
+
+    CreateAppointmentResponse:
+      type: object
+      properties:
+        appointmentId:
+          type: number
+
+    UpdateAppointmentRequest:
+      type: object
+      properties:
+        idPatient:
+          type: number
+        idDoctor:
+          type: number
+        timestamp:
+          type: string
+          format: date-time
+        type:
+          $ref: '#/components/schemas/AppointmentType'
+
+    UpdateAppointmentResponse:
+      type: object
+      properties:
+        result:
+          type: string
+
+    AppointmentDetails:
+      type: object
+      properties:
+        id:
+          type: number
+        idPatient:
+          type: number
+        idDoctor:
+          type: number
+        timestamp:
+          type: string
+          format: date-time
+        type:
+          $ref: '#/components/schemas/AppointmentType'
+
+    DeleteAppointmentResponse:
+      type: object
+      properties:
+        result:
+          type: string
+
+    AppointmentType:
+      type: string
+      enum:
+        - CONSULTATION
+        - SURGERY
+        - THERAPY
+
+    Errors:
+      type: object
+      required:
+        - errors
+      properties:
+        errors:
+          type: array
+          items:
+            $ref: '#/components/schemas/ErrorType'
+        requestId:
+          type: string
+
+    ErrorType:
+      type: object
+      required:
+        - error
+        - message
+      properties:
+        error:
+          type: string
+          example: error
+        message:
+          type: string
+          example: error message
+        code:
+          type: string
+          example: "Internal_Server_Error"
