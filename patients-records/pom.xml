@@ -9,7 +9,7 @@
 	</parent>
 
 	<artifactId>patients-records</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>0.0.2-SNAPSHOT</version>
 	<name>patients-records</name>
 	<description>patients-records</description>
 
@@ -38,6 +38,11 @@
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-data-jpa</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.projectlombok</groupId>
+			<artifactId>lombok</artifactId>
+			<scope>annotationProcessor</scope>
 		</dependency>
 
 
@@ -93,7 +98,7 @@
 								<serializationLibrary>jackson</serializationLibrary>
 								<useJakartaEe>true</useJakartaEe>
 							</configOptions>
-							<skipOverwrite>false</skipOverwrite>
+							<skipOverwrite>true</skipOverwrite>
 						</configuration>
 					</execution>
 				</executions>

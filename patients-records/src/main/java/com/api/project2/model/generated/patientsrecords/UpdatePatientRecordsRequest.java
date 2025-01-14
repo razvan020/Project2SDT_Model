@@ -4,8 +4,6 @@ import java.net.URI;
 import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
-import java.math.BigDecimal;
-import java.util.Date;
 import org.openapitools.jackson.nullable.JsonNullable;
 import java.io.Serializable;
 import java.time.OffsetDateTime;
@@ -26,21 +24,15 @@ public class UpdatePatientRecordsRequest implements Serializable {
 
   private static final long serialVersionUID = 1L;
 
-  private String patientId;
+  private Integer patientId;
 
-  private String patientName;
+  private String diagnosis;
 
-  private String address;
+  private String treatment;
 
-  private Date date = null;
+  private String notes;
 
-  private BigDecimal weight;
-
-  private BigDecimal height;
-
-  private Date birthDate = null;
-
-  public UpdatePatientRecordsRequest patientId(String patientId) {
+  public UpdatePatientRecordsRequest patientId(Integer patientId) {
     this.patientId = patientId;
     return this;
   }
@@ -52,132 +44,72 @@ public class UpdatePatientRecordsRequest implements Serializable {
   
   @Schema(name = "patientId", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("patientId")
-  public String getPatientId() {
+  public Integer getPatientId() {
     return patientId;
   }
 
-  public void setPatientId(String patientId) {
+  public void setPatientId(Integer patientId) {
     this.patientId = patientId;
   }
 
-  public UpdatePatientRecordsRequest patientName(String patientName) {
-    this.patientName = patientName;
+  public UpdatePatientRecordsRequest diagnosis(String diagnosis) {
+    this.diagnosis = diagnosis;
     return this;
   }
 
   /**
-   * Get patientName
-   * @return patientName
+   * Get diagnosis
+   * @return diagnosis
    */
   
-  @Schema(name = "patientName", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
-  @JsonProperty("patientName")
-  public String getPatientName() {
-    return patientName;
+  @Schema(name = "diagnosis", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @JsonProperty("diagnosis")
+  public String getDiagnosis() {
+    return diagnosis;
   }
 
-  public void setPatientName(String patientName) {
-    this.patientName = patientName;
+  public void setDiagnosis(String diagnosis) {
+    this.diagnosis = diagnosis;
   }
 
-  public UpdatePatientRecordsRequest address(String address) {
-    this.address = address;
+  public UpdatePatientRecordsRequest treatment(String treatment) {
+    this.treatment = treatment;
     return this;
   }
 
   /**
-   * Get address
-   * @return address
+   * Get treatment
+   * @return treatment
    */
   
-  @Schema(name = "address", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
-  @JsonProperty("address")
-  public String getAddress() {
-    return address;
+  @Schema(name = "treatment", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @JsonProperty("treatment")
+  public String getTreatment() {
+    return treatment;
   }
 
-  public void setAddress(String address) {
-    this.address = address;
+  public void setTreatment(String treatment) {
+    this.treatment = treatment;
   }
 
-  public UpdatePatientRecordsRequest date(Date date) {
-    this.date = date;
+  public UpdatePatientRecordsRequest notes(String notes) {
+    this.notes = notes;
     return this;
   }
 
   /**
-   * Get date
-   * @return date
+   * Get notes
+   * @return notes
    */
-  @Valid 
-  @Schema(name = "date", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
-  @JsonProperty("date")
-  public Date getDate() {
-    return date;
+  
+  @Schema(name = "notes", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+  @JsonProperty("notes")
+  public String getNotes() {
+    return notes;
   }
 
-  public void setDate(Date date) {
-    this.date = date;
-  }
-
-  public UpdatePatientRecordsRequest weight(BigDecimal weight) {
-    this.weight = weight;
-    return this;
-  }
-
-  /**
-   * Get weight
-   * @return weight
-   */
-  @Valid 
-  @Schema(name = "weight", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
-  @JsonProperty("weight")
-  public BigDecimal getWeight() {
-    return weight;
-  }
-
-  public void setWeight(BigDecimal weight) {
-    this.weight = weight;
-  }
-
-  public UpdatePatientRecordsRequest height(BigDecimal height) {
-    this.height = height;
-    return this;
-  }
-
-  /**
-   * Get height
-   * @return height
-   */
-  @Valid 
-  @Schema(name = "height", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
-  @JsonProperty("height")
-  public BigDecimal getHeight() {
-    return height;
-  }
-
-  public void setHeight(BigDecimal height) {
-    this.height = height;
-  }
-
-  public UpdatePatientRecordsRequest birthDate(Date birthDate) {
-    this.birthDate = birthDate;
-    return this;
-  }
-
-  /**
-   * Get birthDate
-   * @return birthDate
-   */
-  @Valid 
-  @Schema(name = "birthDate", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
-  @JsonProperty("birthDate")
-  public Date getBirthDate() {
-    return birthDate;
-  }
-
-  public void setBirthDate(Date birthDate) {
-    this.birthDate = birthDate;
+  public void setNotes(String notes) {
+    this.notes = notes;
   }
 
   @Override
@@ -190,17 +122,14 @@ public class UpdatePatientRecordsRequest implements Serializable {
     }
     UpdatePatientRecordsRequest updatePatientRecordsRequest = (UpdatePatientRecordsRequest) o;
     return Objects.equals(this.patientId, updatePatientRecordsRequest.patientId) &&
-        Objects.equals(this.patientName, updatePatientRecordsRequest.patientName) &&
-        Objects.equals(this.address, updatePatientRecordsRequest.address) &&
-        Objects.equals(this.date, updatePatientRecordsRequest.date) &&
-        Objects.equals(this.weight, updatePatientRecordsRequest.weight) &&
-        Objects.equals(this.height, updatePatientRecordsRequest.height) &&
-        Objects.equals(this.birthDate, updatePatientRecordsRequest.birthDate);
+        Objects.equals(this.diagnosis, updatePatientRecordsRequest.diagnosis) &&
+        Objects.equals(this.treatment, updatePatientRecordsRequest.treatment) &&
+        Objects.equals(this.notes, updatePatientRecordsRequest.notes);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(patientId, patientName, address, date, weight, height, birthDate);
+    return Objects.hash(patientId, diagnosis, treatment, notes);
   }
 
   @Override
@@ -208,12 +137,9 @@ public class UpdatePatientRecordsRequest implements Serializable {
     StringBuilder sb = new StringBuilder();
     sb.append("class UpdatePatientRecordsRequest {\n");
     sb.append("    patientId: ").append(toIndentedString(patientId)).append("\n");
-    sb.append("    patientName: ").append(toIndentedString(patientName)).append("\n");
-    sb.append("    address: ").append(toIndentedString(address)).append("\n");
-    sb.append("    date: ").append(toIndentedString(date)).append("\n");
-    sb.append("    weight: ").append(toIndentedString(weight)).append("\n");
-    sb.append("    height: ").append(toIndentedString(height)).append("\n");
-    sb.append("    birthDate: ").append(toIndentedString(birthDate)).append("\n");
+    sb.append("    diagnosis: ").append(toIndentedString(diagnosis)).append("\n");
+    sb.append("    treatment: ").append(toIndentedString(treatment)).append("\n");
+    sb.append("    notes: ").append(toIndentedString(notes)).append("\n");
     sb.append("}");
     return sb.toString();
   }

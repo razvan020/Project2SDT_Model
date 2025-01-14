@@ -26,7 +26,7 @@ paths:
           required: true
           name: patientId
           schema:
-            type: number
+            type: integer
 
 
 
@@ -66,7 +66,7 @@ paths:
           required: true
           name: patientId
           schema:
-            type: number
+            type: integer
 
 
       responses:
@@ -143,19 +143,13 @@ components:
       type: object
       properties:
         patientId:
+          type: integer
+        diagnosis:
           type: string
-        patientName:
+        treatment:
           type: string
-        address:
+        notes:
           type: string
-        date:
-          type: date
-        weight:
-          type: number
-        height:
-          type: number
-        birthDate:
-          type: date
 
     UpdatePatientRecordsResponse:
       type: object
@@ -167,37 +161,29 @@ components:
       type: object
       properties:
         patientId:
-          type: number
+          type: integer
         patientName:
           type: string
-        address:
+        appointmentDate:
+          type: date
+        diagnosis:
           type: string
-        date:
-          type: date
-        weight:
-          type: number
-        height:
-          type: number
-        birthDate:
-          type: date
+        treatment:
+          type: string
+        notes:
+          type: string
 
     CreatePatientRecordsRequest:
       type: object
       properties:
         patientId:
+          type: integer
+        diagnosis:
           type: string
-        patientName:
+        treatment:
           type: string
-        address:
+        notes:
           type: string
-        date:
-          type: date
-        weight:
-          type: number
-        height:
-          type: number
-        birthDate:
-          type: date
 
     CreatePatientRecordsResponse:
       type: object
@@ -210,13 +196,24 @@ components:
       type: object
       properties:
         patientId:
-          type: number
+          type: integer
+        diagnosis:
+          type: string
+        treatment:
+          type: string
+        notes:
+          type: string
+
+
+    Patient:
+      type: object
+      properties:
+        patientId:
+          type: integer
         patientName:
           type: string
         address:
           type: string
-        date:
-          type: date
         weight:
           type: number
         height:
@@ -225,7 +222,25 @@ components:
           type: date
 
 
+    Doctor:
+        type: object
+        properties:
+          doctorId:
+            type: integer
+          doctorName:
+            type: string
+          address:
+            type: string
+          specialization:
+            $ref: '#/components/schemas/SpecializationType'
 
+
+    SpecializationType:
+        type: string
+        enum:
+            - NEUROLOGY
+            - CARDIOLOGY
+            - PSYCHIATRY
 
 
     Errors:

@@ -5,7 +5,6 @@
  */
 package com.api.project2.controller.generated.patientsrecords;
 
-import java.math.BigDecimal;
 import com.api.project2.model.generated.patientsrecords.CreatePatientRecordsRequest;
 import com.api.project2.model.generated.patientsrecords.CreatePatientRecordsResponse;
 import com.api.project2.model.generated.patientsrecords.Errors;
@@ -146,12 +145,12 @@ public interface ApiApi {
     )
     
     default ResponseEntity<PatientRecord> getPatientRecords(
-        @NotNull @Parameter(name = "patientId", description = "", required = true, in = ParameterIn.QUERY) @Valid @RequestParam(value = "patientId", required = true) BigDecimal patientId
+        @NotNull @Parameter(name = "patientId", description = "", required = true, in = ParameterIn.QUERY) @Valid @RequestParam(value = "patientId", required = true) Integer patientId
     ) {
         getRequest().ifPresent(request -> {
             for (MediaType mediaType: MediaType.parseMediaTypes(request.getHeader("Accept"))) {
                 if (mediaType.isCompatibleWith(MediaType.valueOf("application/json"))) {
-                    String exampleString = "{ \"date\" : \"\", \"patientName\" : \"patientName\", \"address\" : \"address\", \"patientId\" : 0.8008281904610115, \"weight\" : 6.027456183070403, \"birthDate\" : \"\", \"height\" : 1.4658129805029452 }";
+                    String exampleString = "{ \"patientName\" : \"patientName\", \"treatment\" : \"treatment\", \"notes\" : \"notes\", \"patientId\" : 0, \"diagnosis\" : \"diagnosis\", \"appointmentDate\" : \"\" }";
                     ApiUtil.setExampleResponse(request, "application/json", exampleString);
                     break;
                 }
@@ -210,7 +209,7 @@ public interface ApiApi {
     )
     
     default ResponseEntity<UpdatePatientRecordsResponse> updatePatientRecords(
-        @NotNull @Parameter(name = "patientId", description = "", required = true, in = ParameterIn.QUERY) @Valid @RequestParam(value = "patientId", required = true) BigDecimal patientId,
+        @NotNull @Parameter(name = "patientId", description = "", required = true, in = ParameterIn.QUERY) @Valid @RequestParam(value = "patientId", required = true) Integer patientId,
         @Parameter(name = "UpdatePatientRecordsRequest", description = "") @Valid @RequestBody(required = false) UpdatePatientRecordsRequest updatePatientRecordsRequest
     ) {
         getRequest().ifPresent(request -> {
