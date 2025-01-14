@@ -53,7 +53,7 @@ paths:
           name: appointmentId
           required: true
           schema:
-            type: number
+            type: integer
       responses:
         '200':
           description: Appointment details retrieved successfully
@@ -93,7 +93,7 @@ paths:
           name: appointmentId
           required: true
           schema:
-            type: number
+            type: integer
       responses:
         '200':
           description: Appointment successfully updated
@@ -128,7 +128,7 @@ paths:
           name: appointmentId
           required: true
           schema:
-            type: number
+            type: integer
       responses:
         '200':
           description: Appointment successfully deleted
@@ -160,9 +160,9 @@ components:
       type: object
       properties:
         idPatient:
-          type: number
+          type: integer
         idDoctor:
-          type: number
+          type: integer
         timestamp:
           type: string
           format: date-time
@@ -173,15 +173,15 @@ components:
       type: object
       properties:
         appointmentId:
-          type: number
+          type: integer
 
     UpdateAppointmentRequest:
       type: object
       properties:
         idPatient:
-          type: number
+          type: integer
         idDoctor:
-          type: number
+          type: integer
         timestamp:
           type: string
           format: date-time
@@ -198,11 +198,11 @@ components:
       type: object
       properties:
         id:
-          type: number
+          type: integer
         idPatient:
-          type: number
+          type: integer
         idDoctor:
-          type: number
+          type: integer
         timestamp:
           type: string
           format: date-time

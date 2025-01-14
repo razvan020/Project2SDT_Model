@@ -6,7 +6,6 @@
 package com.api.project2.controller.generated.appointmentscheduling;
 
 import com.api.project2.model.generated.appointmentscheduling.AppointmentDetails;
-import java.math.BigDecimal;
 import com.api.project2.model.generated.appointmentscheduling.CreateAppointmentRequest;
 import com.api.project2.model.generated.appointmentscheduling.CreateAppointmentResponse;
 import com.api.project2.model.generated.appointmentscheduling.DeleteAppointmentResponse;
@@ -90,7 +89,7 @@ public interface ApiApi {
         getRequest().ifPresent(request -> {
             for (MediaType mediaType: MediaType.parseMediaTypes(request.getHeader("Accept"))) {
                 if (mediaType.isCompatibleWith(MediaType.valueOf("application/json"))) {
-                    String exampleString = "{ \"appointmentId\" : 0.8008281904610115 }";
+                    String exampleString = "{ \"appointmentId\" : 0 }";
                     ApiUtil.setExampleResponse(request, "application/json", exampleString);
                     break;
                 }
@@ -147,7 +146,7 @@ public interface ApiApi {
     )
     
     default ResponseEntity<DeleteAppointmentResponse> deleteAppointment(
-        @NotNull @Parameter(name = "appointmentId", description = "", required = true, in = ParameterIn.QUERY) @Valid @RequestParam(value = "appointmentId", required = true) BigDecimal appointmentId
+        @NotNull @Parameter(name = "appointmentId", description = "", required = true, in = ParameterIn.QUERY) @Valid @RequestParam(value = "appointmentId", required = true) Integer appointmentId
     ) {
         getRequest().ifPresent(request -> {
             for (MediaType mediaType: MediaType.parseMediaTypes(request.getHeader("Accept"))) {
@@ -209,12 +208,12 @@ public interface ApiApi {
     )
     
     default ResponseEntity<AppointmentDetails> getAppointment(
-        @NotNull @Parameter(name = "appointmentId", description = "", required = true, in = ParameterIn.QUERY) @Valid @RequestParam(value = "appointmentId", required = true) BigDecimal appointmentId
+        @NotNull @Parameter(name = "appointmentId", description = "", required = true, in = ParameterIn.QUERY) @Valid @RequestParam(value = "appointmentId", required = true) Integer appointmentId
     ) {
         getRequest().ifPresent(request -> {
             for (MediaType mediaType: MediaType.parseMediaTypes(request.getHeader("Accept"))) {
                 if (mediaType.isCompatibleWith(MediaType.valueOf("application/json"))) {
-                    String exampleString = "{ \"idDoctor\" : 1.4658129805029452, \"idPatient\" : 6.027456183070403, \"id\" : 0.8008281904610115, \"type\" : \"CONSULTATION\", \"timestamp\" : \"2000-01-23T04:56:07.000+00:00\" }";
+                    String exampleString = "{ \"idDoctor\" : 1, \"idPatient\" : 6, \"id\" : 0, \"type\" : \"CONSULTATION\", \"timestamp\" : \"2000-01-23T04:56:07.000+00:00\" }";
                     ApiUtil.setExampleResponse(request, "application/json", exampleString);
                     break;
                 }
@@ -273,7 +272,7 @@ public interface ApiApi {
     )
     
     default ResponseEntity<UpdateAppointmentResponse> updateAppointment(
-        @NotNull @Parameter(name = "appointmentId", description = "", required = true, in = ParameterIn.QUERY) @Valid @RequestParam(value = "appointmentId", required = true) BigDecimal appointmentId,
+        @NotNull @Parameter(name = "appointmentId", description = "", required = true, in = ParameterIn.QUERY) @Valid @RequestParam(value = "appointmentId", required = true) Integer appointmentId,
         @Parameter(name = "UpdateAppointmentRequest", description = "") @Valid @RequestBody(required = false) UpdateAppointmentRequest updateAppointmentRequest
     ) {
         getRequest().ifPresent(request -> {
