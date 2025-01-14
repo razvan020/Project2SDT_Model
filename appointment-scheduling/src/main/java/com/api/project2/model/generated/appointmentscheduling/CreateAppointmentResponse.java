@@ -4,7 +4,6 @@ import java.net.URI;
 import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
-import java.math.BigDecimal;
 import org.openapitools.jackson.nullable.JsonNullable;
 import java.io.Serializable;
 import java.time.OffsetDateTime;
@@ -25,9 +24,9 @@ public class CreateAppointmentResponse implements Serializable {
 
   private static final long serialVersionUID = 1L;
 
-  private BigDecimal appointmentId;
+  private Integer appointmentId;
 
-  public CreateAppointmentResponse appointmentId(BigDecimal appointmentId) {
+  public CreateAppointmentResponse appointmentId(Integer appointmentId) {
     this.appointmentId = appointmentId;
     return this;
   }
@@ -36,14 +35,14 @@ public class CreateAppointmentResponse implements Serializable {
    * Get appointmentId
    * @return appointmentId
    */
-  @Valid 
+  
   @Schema(name = "appointmentId", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("appointmentId")
-  public BigDecimal getAppointmentId() {
+  public Integer getAppointmentId() {
     return appointmentId;
   }
 
-  public void setAppointmentId(BigDecimal appointmentId) {
+  public void setAppointmentId(Integer appointmentId) {
     this.appointmentId = appointmentId;
   }
 

@@ -6,7 +6,6 @@ import com.api.project2.model.generated.appointmentscheduling.AppointmentType;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
-import java.math.BigDecimal;
 import java.util.Date;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.openapitools.jackson.nullable.JsonNullable;
@@ -29,16 +28,16 @@ public class CreateAppointmentRequest implements Serializable {
 
   private static final long serialVersionUID = 1L;
 
-  private BigDecimal idPatient;
+  private Integer idPatient;
 
-  private BigDecimal idDoctor;
+  private Integer idDoctor;
 
   @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
   private Date timestamp;
 
   private AppointmentType type;
 
-  public CreateAppointmentRequest idPatient(BigDecimal idPatient) {
+  public CreateAppointmentRequest idPatient(Integer idPatient) {
     this.idPatient = idPatient;
     return this;
   }
@@ -47,18 +46,18 @@ public class CreateAppointmentRequest implements Serializable {
    * Get idPatient
    * @return idPatient
    */
-  @Valid 
+  
   @Schema(name = "idPatient", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("idPatient")
-  public BigDecimal getIdPatient() {
+  public Integer getIdPatient() {
     return idPatient;
   }
 
-  public void setIdPatient(BigDecimal idPatient) {
+  public void setIdPatient(Integer idPatient) {
     this.idPatient = idPatient;
   }
 
-  public CreateAppointmentRequest idDoctor(BigDecimal idDoctor) {
+  public CreateAppointmentRequest idDoctor(Integer idDoctor) {
     this.idDoctor = idDoctor;
     return this;
   }
@@ -67,14 +66,14 @@ public class CreateAppointmentRequest implements Serializable {
    * Get idDoctor
    * @return idDoctor
    */
-  @Valid 
+  
   @Schema(name = "idDoctor", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("idDoctor")
-  public BigDecimal getIdDoctor() {
+  public Integer getIdDoctor() {
     return idDoctor;
   }
 
-  public void setIdDoctor(BigDecimal idDoctor) {
+  public void setIdDoctor(Integer idDoctor) {
     this.idDoctor = idDoctor;
   }
 

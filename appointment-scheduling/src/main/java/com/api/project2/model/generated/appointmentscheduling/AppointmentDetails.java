@@ -6,8 +6,9 @@ import com.api.project2.model.generated.appointmentscheduling.AppointmentType;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
-import java.math.BigDecimal;
 import java.util.Date;
+
+import jakarta.persistence.*;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.openapitools.jackson.nullable.JsonNullable;
 import java.io.Serializable;
@@ -23,24 +24,29 @@ import jakarta.annotation.Generated;
 /**
  * AppointmentDetails
  */
-
+@Entity
+@Table(name = "appointments")
 @Generated(value = "org.openapitools.codegen.languages.SpringCodegen", comments = "Generator version: 7.10.0")
 public class AppointmentDetails implements Serializable {
 
   private static final long serialVersionUID = 1L;
 
-  private BigDecimal id;
+  @Id
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
+  private Integer id;
 
-  private BigDecimal idPatient;
 
-  private BigDecimal idDoctor;
+  private Integer idPatient;
+
+  private Integer idDoctor;
 
   @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
   private Date timestamp;
 
+  @Enumerated(EnumType.STRING)
   private AppointmentType type;
 
-  public AppointmentDetails id(BigDecimal id) {
+  public AppointmentDetails id(Integer id) {
     this.id = id;
     return this;
   }
@@ -49,18 +55,18 @@ public class AppointmentDetails implements Serializable {
    * Get id
    * @return id
    */
-  @Valid 
+  
   @Schema(name = "id", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("id")
-  public BigDecimal getId() {
+  public Integer getId() {
     return id;
   }
 
-  public void setId(BigDecimal id) {
+  public void setId(Integer id) {
     this.id = id;
   }
 
-  public AppointmentDetails idPatient(BigDecimal idPatient) {
+  public AppointmentDetails idPatient(Integer idPatient) {
     this.idPatient = idPatient;
     return this;
   }
@@ -69,18 +75,18 @@ public class AppointmentDetails implements Serializable {
    * Get idPatient
    * @return idPatient
    */
-  @Valid 
+  
   @Schema(name = "idPatient", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("idPatient")
-  public BigDecimal getIdPatient() {
+  public Integer getIdPatient() {
     return idPatient;
   }
 
-  public void setIdPatient(BigDecimal idPatient) {
+  public void setIdPatient(Integer idPatient) {
     this.idPatient = idPatient;
   }
 
-  public AppointmentDetails idDoctor(BigDecimal idDoctor) {
+  public AppointmentDetails idDoctor(Integer idDoctor) {
     this.idDoctor = idDoctor;
     return this;
   }
@@ -89,14 +95,14 @@ public class AppointmentDetails implements Serializable {
    * Get idDoctor
    * @return idDoctor
    */
-  @Valid 
+  
   @Schema(name = "idDoctor", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("idDoctor")
-  public BigDecimal getIdDoctor() {
+  public Integer getIdDoctor() {
     return idDoctor;
   }
 
-  public void setIdDoctor(BigDecimal idDoctor) {
+  public void setIdDoctor(Integer idDoctor) {
     this.idDoctor = idDoctor;
   }
 
